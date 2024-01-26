@@ -30,3 +30,23 @@ searchButtonEl.innerHTML = 'Search'
 formEl.appendChild(inputEl);
 formEl.appendChild(searchButtonEl);
 mainEl.appendChild(formEl);
+
+function createProEl() {
+    const element = document.createElement('div');
+    element.classList.add('profile');
+    element.innerHTML = `
+        <img class="search-image" src=${profileData.avatar_url}></img>
+        <p class="search-text"><span>Name: </span>${profileData.name}</p>
+        <p class="search-text"><span>City: </span>${profileData.location}</p>
+        <p class="search-text"><span>Bio: </span>${profileData.bio}</p>
+    `
+    element.appendChild(createDeleteBtnEl())
+    return element;
+}
+
+function createDeleteBtnEl() {
+    const element = document.createElement('button');
+    element.classList.add('delete-button');
+    element.innerText = 'Delete';
+    
+}
