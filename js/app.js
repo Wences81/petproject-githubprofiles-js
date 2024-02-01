@@ -1,4 +1,5 @@
 const mainEl = document.querySelector('.main');
+const wrapper = document.createElement('div');
 
 const formEl = document.createElement('form');
 formEl.classList.add('search');
@@ -12,6 +13,8 @@ formEl.addEventListener('submit', async (e) => {
     
     if (response.ok) {
         const data = await response.json();
+        wrapper.appendChild(createProfileEl(data));
+        mainEl.appendChild(wrapper);
     } else {
         alert('user is not fined')
     }
@@ -31,7 +34,7 @@ formEl.appendChild(inputEl);
 formEl.appendChild(searchButtonEl);
 mainEl.appendChild(formEl);
 
-function createProEl() {
+function createProfileEl(profileData) {
     const element = document.createElement('div');
     element.classList.add('profile');
     element.innerHTML = `
@@ -48,5 +51,9 @@ function createDeleteBtnEl() {
     const element = document.createElement('button');
     element.classList.add('delete-button');
     element.innerText = 'Delete';
-    
+    element.addEventListener('click', (e) => {
+       wrapper.innerHTML = ''
+    })
+
+    return element
 }
