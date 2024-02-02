@@ -2,7 +2,7 @@ const mainEl = document.querySelector('.main');
 const wrapper = document.createElement('div');
 
 const formEl = document.createElement('form');
-formEl.classList.add('search');
+
 formEl.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -15,6 +15,7 @@ formEl.addEventListener('submit', async (e) => {
         const data = await response.json();
         wrapper.appendChild(createProfileEl(data));
         mainEl.appendChild(wrapper);
+        inputEl.value = '';
     } else {
         alert('user is not fined')
     }
